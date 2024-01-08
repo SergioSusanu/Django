@@ -18,8 +18,11 @@ from django.contrib import admin
 from django.urls import path, include
 from . import views
 
+handler404 = 'lemon.views.handler404'
+
 urlpatterns = [
     path('', views.index, name='index'),
+    path('classview', views.index_class.as_view(), name='indexclass'),
     path('admin/', admin.site.urls),
     path('notifications/', include('notifications.urls')),
     path('reservations/', include('reservations.urls')),

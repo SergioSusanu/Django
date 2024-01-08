@@ -1,8 +1,17 @@
 from django.shortcuts import render
 
 # Create your views here.
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseNotFound
 from datetime import datetime
+
+def handler404(request, exception):
+    return HttpResponseNotFound("Sorry Sergio, 404 error Wazzaa")
+
+from django.views import View
+
+class index_class(View):
+    def get(self, request):
+        return HttpResponse("Get request from class view")
 
 def index(request):
     dt = datetime.today()
@@ -26,13 +35,8 @@ def index(request):
         <br> user agent: {user_agent}
         <br> path info: {path_info}
         """
+
     return HttpResponse(msg)
-
-# from django.views import View
-
-# class index(View):
-#     def get(self, request):
-#         return HttpResponse("Get request")
 
 def users(request, name, id):
     return HttpResponse("Name: {} and id: {}".format(name, id))
