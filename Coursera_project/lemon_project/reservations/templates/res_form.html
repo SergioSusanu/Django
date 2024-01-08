@@ -1,5 +1,6 @@
 
-        <form action="/reservations/process" method="POST">
+        {% comment %} <form action="/reservations/process" method="POST"> {% endcomment %}
+        <form action="{% url 'reservations:process_form' %}" method="POST">
             {% csrf_token %}
             <p>Id: <input type="text" name="id"></p>
             <p>Name: <input type="text" name="name"/></p>
