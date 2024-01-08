@@ -33,3 +33,10 @@ def index(request):
 # class index(View):
 #     def get(self, request):
 #         return HttpResponse("Get request")
+
+def users(request, name, id):
+    return HttpResponse("Name: {} and id: {}".format(name, id))
+
+
+def usersint(request, name, id):
+    return HttpResponse("INT Name: {} and id: {}".format(name, id))

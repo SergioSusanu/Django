@@ -23,4 +23,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('notifications/', include('notifications.urls')),
     path('reservations/', include('reservations.urls')),
+    path('users/<name>/<int:id>', views.usersint, name='getuser'),
+    path('users/<name>/<id>', views.users, name='getuser'),
 ]
