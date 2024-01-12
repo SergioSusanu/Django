@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from . import forms
 
 # Create your views here.
 from django.http import HttpResponse
@@ -8,9 +9,15 @@ def home(request):
 
 def process_form(request):
     if request.method == "POST":
-        id = request.POST["id"]
-        name = request.POST["name"]
-        return HttpResponse("Name: {} and id: {}".format(name, id))
+        form = forms.ReservationForm(request.POST)
+        if form.is_valid():
+            # send to database
+            name = form.cleaned_data['name']
+            date = form.cleaned_data['date']
+            return render(request, 'thank_you.html',{'name': name, 'date': date} )
+        return HttpResponse("Form not valid")
+    return HttpResponse("Something wrong")
 
 def show_form(request):
-    return render(request, 'res_form.html')
+    f = forms.ReservationForm()
+    return render(request, 'res_form.html', {'form':f})
