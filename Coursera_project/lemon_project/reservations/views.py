@@ -12,6 +12,8 @@ def process_form(request):
         form = forms.ReservationForm(request.POST)
         if form.is_valid():
             # send to database
+            form.save()
+            # show thank you page
             name = form.cleaned_data['name']
             date = form.cleaned_data['date']
             return render(request, 'thank_you.html',{'name': name, 'date': date} )

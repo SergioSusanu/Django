@@ -1,10 +1,14 @@
 from django.db import models
 
 # Create your models here.
-class Reservation(models.Model):
-    date = models.DateField()
+class Reservations(models.Model):
+    name = models.CharField(max_length=50)
     guests = models.IntegerField()
-    #table = models.IntegerField()
+    date = models.DateField()
+    # table = forms.IntegerField()
+    # celebration = (('1','anniversary'), ('2','birthday'), ('3','other'))
+    # ocassion = forms.ChoiceField(choices=celebration)
+    # email = forms.EmailField()
 
     def __str__(self):
         return str(self.date) + "  " + str(self.guests)
