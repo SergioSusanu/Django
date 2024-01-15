@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from . import forms
+from .models import MenuCategory
 
 # Create your views here.
 from django.http import HttpResponse
@@ -23,3 +24,7 @@ def process_form(request):
 def show_form(request):
     f = forms.ReservationForm()
     return render(request, 'res_form.html', {'form':f})
+
+def show_menu_categories(request):
+    items = MenuCategory.objects.all()
+    return render(request, 'menu_categories.html', {'items':items})

@@ -35,8 +35,9 @@ def index(request):
         <br> user agent: {user_agent}
         <br> path info: {path_info}
         """
+    resp = {'path':path, 'method':method, 'msg':msg}
 
-    return HttpResponse(msg)
+    return render(request, 'base.html', resp)
 
 def users(request, name, id):
     return HttpResponse("Name: {} and id: {}".format(name, id))
