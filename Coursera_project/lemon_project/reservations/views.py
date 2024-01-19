@@ -28,3 +28,6 @@ def show_form(request):
 def show_menu_categories(request):
     items = MenuCategory.objects.all()
     return render(request, 'menu_categories.html', {'items':items})
+
+def login(request):
+    return render(request, 'login.html')
